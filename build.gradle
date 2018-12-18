@@ -1,7 +1,7 @@
 allprojects {
     buildscript {
         ext.kotlin_version = "1.3.11"
-        ext.kotchan_version = "0.0.8"
+        ext.kotchan_version = "0.0.1"
 
         repositories {
             jcenter()
@@ -14,7 +14,7 @@ allprojects {
         jcenter()
         maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
         maven { url "http://dl.bintray.com/kotlin/kotlin-dev" }
-        maven { url "https://raw.githubusercontent.com/inoutch/kotchan/feature/replace-mpp-repository/repository" }
+        maven { url "https://raw.githubusercontent.com/inoutch/kotchan/m2repo/repository" }
     }
 }
 
