@@ -1,0 +1,23 @@
+allprojects {
+    buildscript {
+        ext.kotlin_version = "1.3.11"
+        ext.kotchan_version = "0.0.8"
+
+        repositories {
+            jcenter()
+            maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
+            maven { url "http://dl.bintray.com/kotlin/kotlin-dev" }
+        }
+    }
+
+    repositories {
+        jcenter()
+        maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
+        maven { url "http://dl.bintray.com/kotlin/kotlin-dev" }
+        maven { url "https://raw.githubusercontent.com/inoutch/kotchan/feature/replace-mpp-repository/repository" }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.10.2"
+}

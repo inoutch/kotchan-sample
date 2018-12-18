@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: "org.jetbrains.kotlin.platform.native"
+
+components.main {
+    targets = ["ios_arm64"]
+    outputKinds = [EXECUTABLE]
+}
+
+sourceSets.main {
+    kotlin.srcDirs += "src/main/kotlin"
+}
+
+dependencies {
+    expectedBy project(":common")
+    implementation "io.github.inoutch:kotchan-ios:$kotchan_version"
+}

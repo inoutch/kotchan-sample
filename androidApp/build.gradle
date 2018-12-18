@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        google()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:3.2.1"
+    }
+}
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-platform-android"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 26
+        versionName "1.0"
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+        main { assets.srcDirs = ["../common/src/main/resources"] }
+    }
+
+    packagingOptions {
+        exclude "META-INF/common.kotlin_module"
+    }
+}
+
+repositories {
+    jcenter()
+    google()
+    maven { url "https://raw.githubusercontent.com/inoutch/kotchan/feature/replace-mpp-repository/repository" }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "io.github.inoutch:kotchan-android:$kotchan_version"
+    expectedBy project(":common")
+}

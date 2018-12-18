@@ -1,0 +1,39 @@
+buildscript {
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: "application"
+apply plugin: "kotlin-platform-jvm"
+
+mainClassName = "io.github.inoutch.kotchan.sample.Main"
+defaultTasks "run"
+
+processResources {
+    from "../common/src/main/resources"
+}
+
+repositories {
+    jcenter()
+    maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
+    maven { url "http://dl.bintray.com/kotlin/kotlin-dev" }
+    maven { url "https://raw.githubusercontent.com/inoutch/kotchan/feature/replace-mpp-repository/repository" }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "io.github.inoutch:kotchan-jvm:$kotchan_version"
+    expectedBy project(":common")
+}
+
+jar {
+    manifest {
+        attributes("Main-Class": "Main")
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
