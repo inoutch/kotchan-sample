@@ -23,4 +23,4 @@ The repository is the samples of [kotchan](https://github.com/inoutch/kotchan) f
            $ ./gradlew :androidApp:installDebug
            
 ### Resource Licenses
-This sample uses a [free image](https://opengameart.org/content/skeleton-animations) and packed by TexturePacker.
+This sample uses a [free image](https://opengameart.org/content/skeleton-animations) packed by TexturePacker.
